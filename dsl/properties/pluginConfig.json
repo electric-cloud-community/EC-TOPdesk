@@ -1,0 +1,34 @@
+{
+   "createIncident" : {
+      "attachCredentials" : "true",
+      "basicAuth" : "true",
+      "canSkipAuth" : "true",
+      "description" : "Create a new incident.",
+      "endpoint" : "#{{instance}}/tas/api/incidents",
+      "fields" : [
+         "title",
+         "briefDescription"
+      ],
+      "hasConfig" : "true",
+      "method" : "POST",
+      "name" : "createIncident",
+      "parameters" : [
+         {
+            "documentation" : "Incident title",
+            "label" : "Incident title",
+            "property" : "title",
+            "required" : "1",
+            "type" : "entry"
+         },
+         {
+            "documentation" : "Brief Description.",
+            "label" : "Brief Description",
+            "property" : "briefDescription",
+            "required" : "1",
+            "type" : "entry"
+         }
+      ],
+      "stepName" : "createIncident"
+   },
+   "options" : null
+}

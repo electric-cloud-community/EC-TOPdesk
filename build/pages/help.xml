@@ -1,0 +1,139 @@
+<!-- HELP GEN VERSION 1 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=us-ascii" http-equiv="content-type" />
+    <title><!-- TITLE BEGIN -->Electric Flow integration for TOPdesk<!-- TITLE END --></title>
+    <link rel="stylesheet" href="../../plugins/EC-TOPdesk/pluginhelp.css" type="text/css" media="screen" />
+</head>
+<!-- REST PLUGIN WIZARD HELP -->
+<body>
+    <div class="help">
+        <h1>EC-TOPdesk</h1>
+        <p>Plugin Version 0.0.2</p>
+        <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
+        <p>Revised on <!-- REVISION DATE BEGIN -->February 28, 2019<!-- REVISION DATE END --></p>
+        <p>
+            <!-- DESCRIPTION BEGIN -->Electric Flow integration for TOPdesk<!-- DESCRIPTION END -->
+        </p>
+        <h2>Links</h2>
+        <!-- LINKS BEGIN -->
+<a href="https://developers.topdesk.com/" target="_blank">https://developers.topdesk.com/</a>
+<!-- LINKS END -->
+        <h1>Contents</h1>
+        <ul>
+        <!-- TOC BEGIN --><li><a href="#createIncident">createIncident</a></li><!-- TOC END -->
+        </ul>
+        <h2>Configuration</h2>
+        <div id="CreateConfiguration">
+            <a name="CreateConfiguration" id="CreateConfigurationLink"></a>
+            <h2>Plugin Configurations</h2>
+            <p>
+                Plugin configurations are sets of parameters that apply
+                across some or all of the plugin procedures. They
+                reduce repetition of common values, create
+                predefined parameter sets for end users, and
+                securely store credentials where needed. Each configuration
+                is given a unique name that is entered in designated
+                parameters on procedures that use them.<br /><br />
+            </p>
+            <h3>Creating Plugin Configurations</h3>
+            <p>To create plugin configurations in ElectricFlow,
+            do these steps:</p>
+            <ol>
+                <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>
+                <li>Find the EC-TOPdesk row.</li>
+                <li>Click <b>Configure</b> to open the
+                EC-TOPdesk Configurations page.</li>
+                <li>Click <b>Create Configuration</b>.</li>
+                <li>To enable ElectricFlow server to communicate with the API,
+                enter the following information:<br /></li>
+                <!-- CONFIG PARAMS BEGIN -->
+    <table class="grid">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="required">
+                    Configuration:
+                </td>
+                <td>
+                    Unique name for the plugin configuration.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description:
+                </td>
+                <td>
+                    Description for the plugin configuration.
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    Credential:
+                </td>
+                <td>
+                    Credentials to connect
+                </td>
+            </tr>
+        </tbody>
+    </table><!-- CONFIG PARAMS END -->
+            </ol>
+            <p>The EC-TOPdesk Configurations page now shows the new configuration.</p>
+            <h3>Editing Plugin Configurations</h3>
+            <p>To edit plugin configurations in ElectricFlow,
+            do these steps:</p>
+            <ol>
+                <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>
+                <li>Find the EC-TOPdesk row.</li>
+                <li>Click <b>Configure</b> to open the Configurations page.</li>
+                <li>Find the configuration that you want to edit.</li>
+                <li>Click <b>Edit</b>.</li>
+                <li>Edit the parameters in the configuration.</li>
+                <li>Click <b>OK</b> to save the modified configuration.</li>
+            </ol>
+        </div>
+        <h1>Procedures</h1>
+        <!-- PROCEDURES BEGIN -->
+            <div id="createIncident">
+                <a name="createIncident" id="createIncident" />
+                <!-- createIncident METADATA BEGIN -->
+            <h3>createIncident</h3>
+            <p>Create a new incident.</p>
+                <!-- createIncident METADATA END -->
+                <!-- createIncident BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Incident title</td>
+                    <td>Incident title</td>
+                </tr>
+                <tr>
+                    <td class="required">Brief Description</td>
+                    <td>Brief Description.</td>
+                </tr>
+                 </tbody>
+            </table>
+                <!-- createIncident END -->
+            </div>
+<!-- PROCEDURES END -->
+    </div>
+    <!-- RELEASE NOTES BEGIN -->
+    <!-- RELEASE NOTES END -->
+</body>
+</html>
