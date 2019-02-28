@@ -1,0 +1,33 @@
+---
+basicAuth: true # get credentials from config and add basic auth
+# This block refers to auto help generation
+help:
+  title: Electric Flow integration for TOPdesk
+  description: Electric Flow integration for TOPdesk
+  links:
+    - https://developers.topdesk.com/
+  hasConfig: true
+procedures:
+  - name: createIncident
+    stepName: createIncident
+    description: Create a new incident.
+    endpoint: '#{{instance}}/tas/api/incidents'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: true
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    parameters:
+      - property: title
+        type: entry
+        label: Incident title
+        documentation: Incident title
+        required: 1
+      - property: briefDescription
+        type: entry
+        label: Brief Description
+        required: 1
+        documentation: Brief Description.
+ 
