@@ -1,0 +1,71 @@
+# This is default sample specification
+# Feel free to change it
+# Call ecpdf showdoc pluginspec to see the list of available fields and their description
+pluginName: EC-TOPdesk
+description: ElectricFlow integration with TOPdesk
+version: 1.0.0
+author: L. Rochette
+authorUrl: mailto:lrochette@electric-cloud.com
+category: Resource Management
+
+# This is a declaration for the plugin configuration
+configuration:
+  # Shell to be used for checking connection
+  shell: ec-perl
+  parameters:
+   - name: config
+     type: entry
+     label: Configuration Name
+     required: true
+     documentation: The name for the created configuration.
+   - name: desc
+     type: entry
+     label: Description
+     required: false
+     documentation: Description for the configuration.
+   - name: endpoint
+     label: Endpoint
+     type: entry
+     required: true
+     documentation: TOPdesk instance endpoint to connect to.
+   - name: credential
+     type: credential
+     label: Credential
+     userNameLabel: Username
+     required: true
+     passwordLabel: Password
+   - name: checkConnection
+     label: Check Connection?
+     type: checkbox
+     checkedValue: true
+     uncheckedValue: false
+     initiallyChecked: 1
+   - name: debugLevel
+     # This parameter name "debugLevel" is supported by ECPDF Logger out of the box
+     label: Debug Level
+     type: select
+     required: 0
+     value: 0
+     options:
+       - name: Info
+         value: 0
+       - name: Debug
+         value: 1
+       - name: Trace
+         value: 2
+
+procedures:
+- name: createOperatorChange
+  description: Create a new change for an operator
+  hasConfig: createOperatorChange 
+  parameters:
+  - name: payload
+    documentation: The JSON content of the operator change to create.
+    type: textarea
+    required: true
+    label: Change payload
+  outputParameters:
+      change: JSON representation of the created operator change
+      changeId: Change ID of the created operator change
+  # Steps are not defined so we assume that this is one-step procedure with a single step named Deploy
+  shell: ec-perl

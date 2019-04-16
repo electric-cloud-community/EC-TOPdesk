@@ -1,14 +1,13 @@
 <plugin>
-  <key>EC-TOPdesk</key>
-  <label>EC-TOPdesk</label>
-  <version>0.0.2</version>
-  <author>L.Rochette</author>
+  <author>L. Rochette</author>
   <authorUrl>mailto:lrochette@electric-cloud.com</authorUrl>
   <category>Resource Management</category>
   <commander-version min="6.0" />
-  <description></description>
   <configure>ec_config</configure>
-  <pluginWizardBased>true</pluginWizardBased>
   <depends min="1.4.1">EC-PluginManager</depends>
+  <description>ElectricFlow integration with TOPdesk</description>
   <help>help.xml</help>
+  <key>EC-TOPdesk</key>
+  <label>EC-TOPdesk</label>
+  <version>0.0.2</version>
 </plugin>

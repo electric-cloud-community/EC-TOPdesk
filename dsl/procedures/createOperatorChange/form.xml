@@ -1,0 +1,21 @@
+<!--
+    This form is generated automatically from the parameters pluginspec.
+    Please not not edit this file manually as it will be regenerated.
+-->
+<editor>
+  <formElement>
+    <type>entry</type>
+    <property>config</property>
+    <required>1</required>
+    <documentation>Previously defined configuration for the plugin</documentation>
+    <label>Configuration Name:</label>
+    <configuration>1</configuration>
+  </formElement>
+  <formElement>
+    <type>textarea</type>
+    <property>payload</property>
+    <required>1</required>
+    <documentation>The JSON content of the operator change to create.</documentation>
+    <label>Change payload:</label>
+  </formElement>
+</editor>

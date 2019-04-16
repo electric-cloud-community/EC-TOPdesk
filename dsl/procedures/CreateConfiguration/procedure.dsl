@@ -1,24 +1,23 @@
 import java.io.File
 
-def procName = 'CreateConfiguration'
-procedure procName,
-        description: 'Creates a plugin configuration', {
+// This file was automatically generated. It will not be regenerated upon subsequent updates.
+procedure 'CreateConfiguration', description: 'Creates a plugin configuration', {
+
+
+
+    step 'checkConnection',
+        command: new File(pluginDir, "dsl/procedures/CreateConfiguration/steps/checkConnection.pl").text,
+        errorHandling: 'abortProcedure',
+        shell: 'ec-perl',
+        resourceName: ''
+
 
     step 'createConfiguration',
-            command: new File(pluginDir, "dsl/procedures/$procName/steps/createConfiguration.pl").text,
-            errorHandling: 'abortProcedure',
-            exclusiveMode: 'none',
-            postProcessor: 'postp',
-            releaseMode: 'none',
-            shell: 'ec-perl',
-            timeLimitUnits: 'minutes'
-
-    step 'createAndAttachCredential',
-        command: new File(pluginDir, "dsl/procedures/$procName/steps/createAndAttachCredential.pl").text,
-        errorHandling: 'failProcedure',
+        command: new File(pluginDir, "dsl/procedures/CreateConfiguration/steps/createConfiguration.pl").text,
+        errorHandling: 'abortProcedure',
         exclusiveMode: 'none',
+        postProcessor: 'postp',
         releaseMode: 'none',
         shell: 'ec-perl',
         timeLimitUnits: 'minutes'
-
 }
