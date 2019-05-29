@@ -17,39 +17,52 @@ sub pluginInfo {
 
 # Auto-generated method for the procedure createOperatorChange/createOperatorChange
 # Add your code into this method and it will be called when step runs
+use JSON;
 sub createOperatorChange {
     my ($pluginObject) = @_;
     my $context = $pluginObject->newContext();
     my $params = $context->getStepParameters();
-    print "Parameters: " . Dumper $params;
+    #print "Parameters: " . Dumper $params;
     # Config is an ECPDF::Config object;
     my $config = $context->getConfigValues();
-    print "Configuration: " . Dumper $config;
+    #print "Configuration: " . Dumper $config;
 
-    my $url = $params->getValue('endpoint');
-    if (!$url->isValid()) {
-        $pluginObject->bail_out("Url %s is invalid", $url);
-    }
+    my $url = $config->getParameter('endpoint')->getValue();
     $url .= "/tas/api/operatorChanges";
 
-    # loading component here using PluginObject;
-    my $restComponent = $pluginObject->loadComponent('REST');
-    my $request = $restComponent->newRequest('POST' => $url);
-    if (my $cred = $config->getCredential('credential')) {
-        $request->auth('basic', $cred);
-    }
-    my $response = $restComponent->doRequest($request);
+    my $payload = $params->getParameter('payload')->getValue();
 
+    # loading component here using PluginObject;
+    my $restComponent = $context->newRESTClient($config);
+    my $request = $restComponent->newRequest('POST' => $url);
+    $request->content($payload);
+    $request->header('Content-type', "application/json");
+
+    if (my $cred = $config->getParameter('credential')) {
+      my $user=$cred->getUserName();
+      my $pwd =$cred->getSecretValue();
+      $request->authorization_basic($user, $pwd);
+    }
+    #print  "Request: " . Dumper($request);
+
+    my $response = $restComponent->doRequest($request);
     my $stepResult = $context->newStepResult();
-    if ($response->success()) {
-        $stepResult->success();
-        $stepResult->setMessage("REST request with method POST to %s has been successful", $url);
+
+    if ($response->is_success()) {
+      #print "Success Response : " . Dumper $response;
+      #print "Response decoded: " . Dumper $response->decoded_content;
+      my $respContent = from_json($response->decoded_content);
+      my $changeId=$respContent->{id};
+      $stepResult->setJobStepSummary("Change request $changeId created successfully");
+      $stepResult->setOutputParameter('change', $response->decoded_content);
+      $stepResult->setOutputParameter('changeId', $changeId);
     }
     else {
-        $stepResult->failure();
-        $stepResult->setMessage("Failed during REST request to %s using POST", $url);
-        # this will abort whole procedure during apply, otherwise just step will be aborted.
-        $stepResult->abortProcedureOnApply(1);
+      $stepResult->setJobStepOutcome('error');
+      $stepResult->setJobStepSummary("Failed POST request to $url");
+      printf("Failed  POST request to $url\n\t%s\n",$response->status_line);
+      # this will abort whole procedure during apply, otherwise just step will be aborted.
+      # $stepResult->abortProcedureOnApply(1);
     }
     # $stepResult->apply();
     # print "Created stepresult\n";

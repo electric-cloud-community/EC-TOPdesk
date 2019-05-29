@@ -32,7 +32,6 @@ $logfile .= "Current directory: $dir\n";
 # Evaluate promote.groovy or demote.groovy based on whether plugin is being promoted or demoted ($promoteAction)
 local $/ = undef;
 
-
 my $demoteDsl = q{
 # demote.groovy placeholder
 };
@@ -40,7 +39,6 @@ my $demoteDsl = q{
 my $promoteDsl = q{
 # promote.groovy placeholder
 };
-
 
 my $dsl;
 if ($promoteAction eq 'promote') {
@@ -63,7 +61,6 @@ my $dslReponse = $commander->evalDsl(
         serverLibraryPath => "$pluginDir/dsl"
     },
 );
-
 
 $logfile .= $dslReponse->findnodes_as_string("/");
 warn $logfile;
@@ -147,7 +144,6 @@ if ( !$errorMessage ) {
     }
 }
 
-
 # Create output property for plugin setup debug logs
 my $nowString = localtime;
 $commander->setProperty( "/plugins/$pluginName/project/logs/$nowString", { value => $logfile } );
@@ -155,7 +151,7 @@ $commander->setProperty( "/plugins/$pluginName/project/logs/$nowString", { value
 die $errorMessage unless !$errorMessage;
 
 # Please do not remove the line below, it marks the auto-generated code and is used by the ecpdf tool
-## === ec_setup ends, checksum: ce63f28a66032ec19c70ea2f68c26f3e ===
+## === ec_setup ends, checksum: 67063a7039dc062ff9e1da5eeae95985 ===
 # Please place your custom code between two markers below:
 # EC Setup Custom Starts
 

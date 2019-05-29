@@ -24,13 +24,10 @@ use ElectricCommander;
 use ElectricCommander::PropDB;
 use JSON;
 
-
 use constant {
     SUCCESS => 0,
     ERROR   => 1,
 };
-
-
 
 ## get an EC object
 my $ec = new ElectricCommander();
@@ -43,7 +40,6 @@ eval {
 } or do {
     $configPropertySheet = 'ec_plugin_cfgs';
 };
-
 
 eval {
     createConfigurationPropertySheet($configPropertySheet);
@@ -98,9 +94,6 @@ eval {
     $ec->setProperty("/myJob/configError", $err);
     exit 1;
 };
-
-
-
 
 sub createAndAttachCredential {
     my ($credName, $configName, $configPropertySheet, $steps) = @_;
@@ -164,7 +157,6 @@ sub rollback {
     }
 }
 
-
 sub getActualParameters {
     my $x       = $ec->getJobDetails($ENV{COMMANDER_JOBID});
     my $nodeset = $x->find('//actualParameter');
@@ -212,6 +204,6 @@ sub createConfigurationPropertySheet {
         $cfg->setCol("$opts->{config}", "$key", "$opts->{$key}");
     }
 }
-## === createConfiguration ends, checksum: 40eca5208336ab27301980ab4f18797f ===
+## === createConfiguration ends, checksum: b9c4ad2aeb2b3997dfbec1b845c4d7b4 ===
 # user-defined code can be placed below this line
 # Do not edit the code above the line as it will be updated upon plugin upgrade

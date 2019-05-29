@@ -13,7 +13,7 @@ use ElectricCommander ();
 $| = 1;
 my $ec = new ElectricCommander->new();
 
-my $pdk="ecpdk";
+my $pdk="flowpdk";
 
 my $pluginVersion = "0.0.2";
 my $pluginKey = "EC-TOPdesk";
@@ -56,7 +56,7 @@ print "[INFO] - Cleaning\n";
 system("./clean.sh");
 
 print "[INFO] - Creating plugin '$pluginName'\n";
-
+print "[INFO] - $pdk build -bn $buildCounter\n";
 system ("$pdk build -bn $buildCounter");
 
 move("build/${pluginKey}.zip", "./${pluginKey}.jar");

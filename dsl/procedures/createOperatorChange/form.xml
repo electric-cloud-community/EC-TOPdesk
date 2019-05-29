@@ -3,13 +3,15 @@
     Please not not edit this file manually as it will be regenerated.
 -->
 <editor>
+  <help>/commander/pages/@PLUGIN_NAME@/help?s=Administration&amp;amp;ss=Plugins#createOperatorChange</help>
   <formElement>
     <type>entry</type>
     <property>config</property>
+    <configuration>1</configuration>
+    <propertyReference>/plugins/@PLUGIN_NAME@/project/ec_plugin_cfgs</propertyReference>
     <required>1</required>
     <documentation>Previously defined configuration for the plugin</documentation>
     <label>Configuration Name:</label>
-    <configuration>1</configuration>
   </formElement>
   <formElement>
     <type>textarea</type>

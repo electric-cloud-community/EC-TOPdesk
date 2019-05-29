@@ -8,6 +8,26 @@ author: L. Rochette
 authorUrl: mailto:lrochette@electric-cloud.com
 category: Resource Management
 
+procedures:
+- name: createOperatorChange
+  description: Create a new change for an operator
+  steps:
+  -
+  name: createOperatorChange
+  shell: ec-perl
+  hasConfig: true
+  parameters:
+  - name: payload
+    documentation: The JSON content of the operator change to create.
+    type: textarea
+    required: true
+    label: Change payload
+  outputParameters:
+      change: JSON representation of the created operator change
+      changeId: Change ID of the created operator change
+  # Steps are not defined so we assume that this is one-step procedure with a single step named Deploy
+  shell: ec-perl
+
 # This is a declaration for the plugin configuration
 configuration:
   # Shell to be used for checking connection
@@ -53,19 +73,3 @@ configuration:
          value: 1
        - name: Trace
          value: 2
-
-procedures:
-- name: createOperatorChange
-  description: Create a new change for an operator
-  hasConfig: createOperatorChange 
-  parameters:
-  - name: payload
-    documentation: The JSON content of the operator change to create.
-    type: textarea
-    required: true
-    label: Change payload
-  outputParameters:
-      change: JSON representation of the created operator change
-      changeId: Change ID of the created operator change
-  # Steps are not defined so we assume that this is one-step procedure with a single step named Deploy
-  shell: ec-perl
