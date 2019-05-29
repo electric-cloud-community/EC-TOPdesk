@@ -74,6 +74,43 @@ sub createOperatorChange {
 
     $stepResult->apply();
 }
+
+sub getOperatorChange {
+    my ($pluginObject) = @_;
+    my $context = $pluginObject->newContext();
+    my $params = $context->getStepParameters();
+    my $config = $context->getConfigValues();
+
+    my $url = $config->getParameter('endpoint')->getValue();
+    my $id = $params->getParameter('changeId')->getValue();
+    $url .= "/tas/api/operatorChanges/$id";
+
+    # loading component here using PluginObject;
+    my $restComponent = $context->newRESTClient();
+    my $request = $restComponent->newRequest('GET' => $url);
+
+    if (my $cred = $config->getParameter('credential')) {
+      my $user=$cred->getUserName();
+      my $pwd =$cred->getSecretValue();
+      $request->authorization_basic($user, $pwd);
+    }
+
+    my $response = $restComponent->doRequest($request);
+    my $stepResult = $context->newStepResult();
+
+    if ($response->is_success()) {
+      my $respContent = from_json($response->decoded_content);
+      $stepResult->setJobStepSummary("Change request $id retrieved successfully");
+      $stepResult->setOutputParameter('change', $response->decoded_content);
+    }
+    else {
+      $stepResult->setJobStepOutcome('error');
+      $stepResult->setJobStepSummary("Failed GET request to $url");
+      printf("Failed  GET request to $url\n\t%s\n",$response->status_line);
+    }
+
+    $stepResult->apply();
+}
 ## === step ends ===
 # Please do not remove the marker above, it is used to place new procedures into this file.
 

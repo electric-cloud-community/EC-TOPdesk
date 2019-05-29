@@ -28,6 +28,21 @@ procedures:
   # Steps are not defined so we assume that this is one-step procedure with a single step named Deploy
   shell: ec-perl
 
+- name: getOperatorChange
+  description: Get an operator change record
+  steps:
+  -
+  name: getOperatorChange
+  shell: ec-perl
+  hasConfig: true
+  parameters:
+  - name: changeId
+    documentation: the ID of the operator change
+    type: entry
+    required: true
+    label: Operator change ID
+  outputParameters:
+      change: JSON representation of the operator change
 # This is a declaration for the plugin configuration
 configuration:
   # Shell to be used for checking connection

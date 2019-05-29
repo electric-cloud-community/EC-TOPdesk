@@ -15,6 +15,7 @@ def pluginDir = getProperty("/projects/$pluginName/pluginDir").value
 //List of procedure steps to which the plugin configuration credentials need to be attached
 def stepsWithAttachedCredentials = [
 [procedureName: "createOperatorChange", stepName: "createOperatorChange"],
+[procedureName: "getOperatorChange", stepName: "getOperatorChange"],
 // === steps with credentials ends ===
 // The code above will be updated automatically as you add more procedures into your plugin
 // Feel free to change the code below
