@@ -1,15 +1,113 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta content="text/html; charset=us-ascii" http-equiv="content-type"/>
-        <title>EC-TOPdesk</title>
-        <link rel="stylesheet" href="../../plugins/@PLUGIN_KEY@/pluginhelp.css" type="text/css" media="screen" />
-    </head>
-    <body>
-        <div class="help">
-            <h1>EC-TOPdesk</h1>
-			<h3>Overview</h3>
-			<p></p>
-		</div>
-	</body>
+<head>
+  <meta content="text/html; charset=us-ascii" http-equiv="content-type"/>
+  <name></name>title>CloudBees Flow Plugin for TOPdesk</title>
+  <link rel="stylesheet" href="../../plugins/@PLUGIN_KEY@/pluginhelp.css" type="text/css" media="screen" />
+</head>
+<body>
+<div class="help">
+	<h1 class="pluginname">@PLUGIN_KEY@</h1>
+	<p>Plugin Version @PLUGIN_VERSION@</p>
+  <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
+  <p>Revised on May 29, 2019</p>
+
+  <h1>Contents</h1>
+  <ul>
+    <li><p><a href="#overview">Overview</a></p></li>
+    <li><p><a href="#setupconfig">Setting Up the Plugin Configuration</a></p></li>
+    <li><p><a href="#procedures">Plugin Procedures</a></p></li>
+    <ul>
+        <li><a href="#createOperatorChange">createOperatorChange</a></li>
+        <li><a href="#getOperatorChange">getOperatorChange</a></li>
+    </ul>
+  </ul>
+
+  <h1>Overview</h1>
+  <p>TOPdesk helps orgnizations to improve their service management.</p>
+  <dl>
+    <dt>Standard and Simple</dt>
+    <dd>Make things as easy as possible for your customer. Give them software
+      that is simple to use and implement, be transparent about your products and
+      services, and offer a good self-service portal that boosts customer independence.</dd>
+    <dt>Enterprise Service Management (ESM)</dt>
+    <dd>No department is an island. Your customers rely on IT, facilities and
+      other services – with each handling requests in their own way. Save your
+      customers a lot of hassle by offering a single point of contact, and even
+      by sharing your processes. With all departments on the same page,
+      communication with your customers becomes more straightforward, and makes
+      your services easier to manage. That's what ESM (sometimes called Shared
+      Service Management or SSM) is about.</dd>
+    <dt>Service Integration Management</dt>
+    <dd>Your department probably works with suppliers. But if they let you down,
+      you may let your customers down. That’s why it’s important to collaborate
+      effectively with your suppliers. How? Start by integrating your tools.
+      This helps both parties manage agreements and stay up-to-date. If you
+      improve the relationship with your supplier, everyone will benefit.</dd>
+  </dl>
+
+  <p>For more information about TOPdesk, go to the
+    <a href="http://www.topdesk.com/">TOPdesk home page</a>.</p>
+
+  <h2>CloudBees Flow integration to TOPdesk</h2>
+  <p>The plugin interacts with TOPdesk REST API. For more details about the API,
+    please consult
+    <a href="https://developers.topdesk.com/">TOPdesk Appliation Programming Interface</a>.
+
+  <p>IMPORTANT: For all parameter descriptions in this document, required
+    parameters are shown in <span class='required'>bold italics</span>.</p>
+
+  <p>IMPORTANT: In the CloudBees Flow UI, go to the Home page, open the Main Menu,
+    and click <b>Admin</b> > <b>Plugins</b> to open the Plugin Manager.</p>
+
+  <h1 id="setupconfig">Setting Up the Plugin Configuration</h1>
+
+  <p>Plugin configurations are sets of parameters that apply across some or all
+    of the plugin procedures. They reduce repetition of common values, create
+    predefined sets of parameters for end users, and store credentials securely.
+    Each configuration has a unique name that is automatically entered in designated
+	  parameters in the procedures.</p>
+
+  <h2>Input</h2>
+  <ol>
+    <li>In the Main Menu, click <b>Admin</b> > <b>Plugins</b> to open the Plugin Manager.</li>
+    <li>Find the EC-TOPdesk row.</li>
+    <li>Click <b>Configure</b> to open the TOPdesk Configurations page.</li>
+    <li>Click <b>Create Configuration</b>.</li>
+    <li>To create a TOPdesk configuration, enter the following information and click <b>OK</b>.
+    <br /> Remember that you may need to create additional configurations later.</li>
+    <table class="grid">
+      <thead>
+        <tr><th>Parameter</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class='required'>Configuration Name</td>
+          <td>Name of the plugin configuration. (Required)</td>
+        </tr>
+         <tr>
+           <td>Description</td>
+           <td>Description of the configuration</td>
+         </tr>
+       <tr>
+          <td class="required">Endpoint</td>
+          <td>Endpoit URL to target, such as "https://demo.topdesk.net". (Required)</td>
+        </tr>
+        <tr>
+          <td class='required'>Credential</td>
+          <td>
+            <ul>
+              <li><b>User Name</b>: Enter the user name. This parameter is case sensitive. (Required)</li>
+              <li><b>Password</b>: Enter the password. This parameter is case sensitive. (Required)</li>
+              <li><b>Retype Password</b>: Re-enter the password. This parameter is case sensitive. (Required)</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</ol>
+
+<img src="../../plugins/@PLUGIN_KEY@/images/ServiceNow-1.png" alt="form" />
+</div>
+</body>
 </html>
