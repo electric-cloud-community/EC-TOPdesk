@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta content="text/html; charset=us-ascii" http-equiv="content-type"/>
-  <name></name>title>CloudBees Flow Plugin for TOPdesk</title>
+  <title>CloudBees Flow Plugin for TOPdesk</title>
   <link rel="stylesheet" href="../../plugins/@PLUGIN_KEY@/pluginhelp.css" type="text/css" media="screen" />
 </head>
 <body>
@@ -21,16 +21,17 @@
         <li><a href="#createOperatorChange">createOperatorChange</a></li>
         <li><a href="#getOperatorChange">getOperatorChange</a></li>
     </ul>
+    <li><p><a href="#rns">Release Notes</a></p></li>
   </ul>
 
   <h1>Overview</h1>
   <p>TOPdesk helps orgnizations to improve their service management.</p>
   <dl>
-    <dt>Standard and Simple</dt>
+    <dt>Standard and Simple:</dt>
     <dd>Make things as easy as possible for your customer. Give them software
       that is simple to use and implement, be transparent about your products and
       services, and offer a good self-service portal that boosts customer independence.</dd>
-    <dt>Enterprise Service Management (ESM)</dt>
+    <dt>Enterprise Service Management (ESM):</dt>
     <dd>No department is an island. Your customers rely on IT, facilities and
       other services – with each handling requests in their own way. Save your
       customers a lot of hassle by offering a single point of contact, and even
@@ -38,7 +39,7 @@
       communication with your customers becomes more straightforward, and makes
       your services easier to manage. That's what ESM (sometimes called Shared
       Service Management or SSM) is about.</dd>
-    <dt>Service Integration Management</dt>
+    <dt>Service Integration Management:</dt>
     <dd>Your department probably works with suppliers. But if they let you down,
       you may let your customers down. That’s why it’s important to collaborate
       effectively with your suppliers. How? Start by integrating your tools.
@@ -52,7 +53,7 @@
   <h2>CloudBees Flow integration to TOPdesk</h2>
   <p>The plugin interacts with TOPdesk REST API. For more details about the API,
     please consult
-    <a href="https://developers.topdesk.com/">TOPdesk Appliation Programming Interface</a>.
+    <a href="https://developers.topdesk.com/">TOPdesk Appliation Programming Interface</a>.</p>
 
   <p>IMPORTANT: For all parameter descriptions in this document, required
     parameters are shown in <span class='required'>bold italics</span>.</p>
@@ -97,17 +98,80 @@
           <td class='required'>Credential</td>
           <td>
             <ul>
-              <li><b>User Name</b>: Enter the user name. This parameter is case sensitive. (Required)</li>
-              <li><b>Password</b>: Enter the password. This parameter is case sensitive. (Required)</li>
-              <li><b>Retype Password</b>: Re-enter the password. This parameter is case sensitive. (Required)</li>
+              <li><b>User Name</b>: Enter the user name. This parameter is case
+              sensitive. (Required)</li>
+              <li><b>Password</b>: Enter the password. This parameter is case
+              sensitive. (Required)</li>
+              <li><b>Retype Password</b>: Re-enter the password. This parameter
+              is case sensitive. (Required)</li>
             </ul>
           </td>
         </tr>
+        <tr>
+          <td>Check Connection</td>
+          <td>If checked, the credentials will be checked before the
+            configuration is saved.</td>
+        </tr>
+        <tr>
+          <td>Log Level</td>
+          <td>This option sets debug level for logs. If info is selected, only
+            summary information will be show, for debug, there will be some debug
+            information and for trace the whole requests and responses will be shown</td>
+        </tr>
       </tbody>
     </table>
-</ol>
+  </ol>
 
-<img src="../../plugins/@PLUGIN_KEY@/images/ServiceNow-1.png" alt="form" />
+  <img src="../../plugins/@PLUGIN_KEY@/images/TOPdesk-config.png" alt="configuration form" />
+
+  <h1 id="procedures">Plugin Procedures</h1>
+
+  <div id="createOperatorChange"><a name="createOperatorChange" id="createOperatorChange"></a>
+    <h2>createOperatorChange</h2>
+    <p>This procedure adds an Operator Change to TOPdesk.</p>
+    <table class="grid">
+      <thead>
+        <tr><th>Parameter</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class='required'>Configuration Name</td>
+          <td>Name of the plugin configuration. (Required)</td>
+        </tr>
+        <tr>
+          <td>payload</td>
+          <td>JSON representation of the operator change you want to create.</td>
+        </tr>
+      </tbody>
+    </table>
+      <p>The procedure sets 2 output parameters: change and changeId</p>
+  </div>
+
+  <div id="getOperatorChange"><a name="getOperatorChange" id="getOperatorChange"></a>
+    <h2>getOperatorChange</h2>
+    <p>This procedure retrieves an Operator Change from TOPdesk.</p>
+    <table class="grid">
+      <thead>
+        <tr><th>Parameter</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class='required'>Configuration Name</td>
+          <td>Name of the plugin configuration. (Required)</td>
+        </tr>
+        <tr>
+          <td>change id</td>
+          <td>ID of the operator cahnge to retrieve.</td>
+        </tr>
+      </tbody>
+    </table>
+      <p>The procedure sets 1 output parameters: change</p>
+  </div>
+  <h1 id="rns">Release Notes</h1>
+    <h2 id="1.0.0">@PLUGIN_KEY@ 1.0.0</h2>
+    <ul>
+      <li>New Integration: EC-TOPdesk.</li>
+  </ul>
 </div>
 </body>
 </html>

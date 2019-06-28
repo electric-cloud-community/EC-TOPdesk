@@ -11,3 +11,5 @@ def pluginDir = getProperty("/projects/$pluginName/pluginDir").value
 cleanup(pluginKey, pluginName)
 
 return "Plugin $pluginKey demoted"
+
+// This file will be regenerated, please do not add your code into this file

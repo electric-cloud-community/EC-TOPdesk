@@ -15,9 +15,10 @@ def pluginDir = getProperty("/projects/$pluginName/pluginDir").value
 //List of procedure steps to which the plugin configuration credentials need to be attached
 def stepsWithAttachedCredentials = [
 // === steps with credentials template ====
-    [procedureName: "{{ step.procedureName }}", stepName: "{{ step.stepName }}"],
+    {% if step %}[procedureName: "{{ step.procedureName }}", stepName: "{{ step.stepName }}"],{% endif %}
 // === steps with credentials template ends ===
 // === steps with credentials ends ===
+// Please do not remove the line above, it marks the place for the new steps
 // The code above will be updated automatically as you add more procedures into your plugin
 // Feel free to change the code below
 ]
@@ -31,7 +32,7 @@ project pluginName, {
     property 'ec_formXmlCompliant', value: 'true'
     loadPluginProperties(pluginDir, pluginName)
     loadProcedures(pluginDir, pluginKey, pluginName, stepsWithAttachedCredentials)
-    //plugin configuration metadata
+    // plugin configuration metadata
     // Please remove the block below if your plugin does not require configuration
     property 'ec_config', {
         configLocation = 'ec_plugin_cfgs'

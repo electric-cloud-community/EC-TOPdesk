@@ -15,7 +15,7 @@ my $ec = new ElectricCommander->new();
 
 my $pdk="flowpdk";
 
-my $pluginVersion = "0.0.3";
+my $pluginVersion = "1.0.0";
 my $pluginKey = "EC-TOPdesk";
 
 # Fix version in plugin.xml
